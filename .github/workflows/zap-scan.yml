@@ -1,0 +1,20 @@
+name: OWASP ZAP Scan
+
+on:
+  push:
+    branches:
+      - main  # Change if your branch name is different
+
+jobs:
+  zap_scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run OWASP ZAP baseline scan
+        uses: zaproxy/action-baseline@v0.10.0
+        with:
+          target: 'https://sireesha1177.github.io/devops-practice/' 
+          fail_action: false  # Set to true to fail build on vulnerabilities
